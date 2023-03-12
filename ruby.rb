@@ -42,8 +42,9 @@ class GameBoard
         end
     end
 
-
-
+    def countTurn
+        @turnNumber += 1
+    end
 
 
     def playerTurn(symbol, target)
@@ -98,6 +99,11 @@ class GameBoard
         end
     end
 
+    def playGame
+        puts "     Tic Tac Toe! \nType either x/o followed by the space # you want to use! (Ex: x4)"
+        showBoard()
+    end
+
     #next is playGame function that takes (.gets) user input up to 9 times while checking for 
     #a winner(separate function), if no winner by the end of turn 9 then return tie game and do a pretty rematch/restart message
 
@@ -105,16 +111,18 @@ end
 
 
 
-def CreateBoard
+def newBoard
 
 end
 
 
 currentGame = GameBoard.new
-currentGame.showBoard
+# currentGame.showBoard
 
 def notbrokenyet
     puts "havent broken it yet :)"
 end
 
-notbrokenyet 
+notbrokenyet()
+
+currentGame.playGame()
