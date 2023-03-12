@@ -22,7 +22,7 @@
 # end
 
 class GameBoard
-    # attr_reader :board
+    attr_accessor :board
     def initialize
         @board = [
             ['1', '2', '3'], 
@@ -39,7 +39,57 @@ class GameBoard
         end
     end
 
-    
+
+
+
+
+    def playerTurn(symbol, target)
+        @board.each do |row|
+            row.each_with_index do |cell, index|
+                if (cell == target)
+                    row[index] = symbol
+                else 
+                    puts "Invalid input please try again. 
+                    Be sure to put x/o followed by the space you want to go! Ex: x5 or o3"
+                end
+            end
+        end
+    end
+
+
+    def horizontalCheck
+        # if @board.each do |row|
+        #     row.all?
+        if  (@board[0][0] == @board[0][1] && @board[0][1] == @board[0][2]) ||
+            (@board[1][0] == @board[1][1] && @board[1][1] == @board[1][2]) ||
+            (@board[2][0] == @board[2][1] && @board[2][1] == @board[2][2])
+            return true
+        else false
+
+    end
+    def verticalCheck
+        if  (@board[0][0] == @board[1][0] && @board[1][0] == @board[2][0]) ||
+            (@board[0][1] == @board[1][1] && @board[1][1] == @board[2][1]) ||
+            (@board[0][2] == @board[1][2] && @board[1][2] == @board[2][2])
+            return true
+        else false
+    end
+    def diagonalCheck
+        if  (@board[0][0] == @board[1][1] && @board[1][1] == @board[2][2]) ||
+            (@board[0][2] == @board[1][1] && @board[1][1] == @board[2][0]) 
+            return true
+        else false
+    end
+
+
+
+    def checkWinner
+        if (horizontalCheck() || verticalCheck() || diagonalCheck())
+            return (winner = true)
+    end
+
+    #next is playGame function that takes (.gets) user input up to 9 times while checking for 
+    #a winner(separate function), if no winner by the end of turn 9 then return tie game and do a pretty rematch/restart message
 
 end
 
