@@ -26,12 +26,26 @@ class GameBoard
             ['7', '8', '9']
         ]
     end
+
+    def showBoard
+        puts "-------------"
+        @board.each do |row|
+            print "| #{row[0]} | #{row[1]} | #{row[2]} |"
+
+            puts "\n-------------"
+        end
+    end
 end
+
+
 
 def CreateBoard
-    
 
 end
+
+
+board = GameBoard.new
+board.showBoard
 
 def notbrokenyet
     puts "havent broken it yet :)"
