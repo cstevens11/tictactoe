@@ -20,7 +20,11 @@ end
 
 class GameBoard
     def initialize
-        @board = []
+        @board = [
+            ['1', '2', '3'], 
+            ['4', '5', '6'], 
+            ['7', '8', '9']
+        ]
     end
 end
 
@@ -28,3 +32,9 @@ def CreateBoard
     
 
 end
+
+def notbrokenyet
+    puts "havent broken it yet :)"
+end
+
+notbrokenyet 
