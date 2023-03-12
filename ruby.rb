@@ -6,19 +6,23 @@
 #       6.win checker function that checks for 3 in a row
 #       7.tie checker function that runs if 9 moves are made and no win
 
-class GameTile
-    attr_reader :tile 
-    def initialize
-        @tile = '_'
-    end
-    def tileChange(player)
-        self.tile = player
-    end
-    protected
-    attr_writer :tile
-end
+
+#for changing the @board values when players take turns
+#idk if I even need this class
+# class GameTile
+#     attr_reader :tile 
+#     def initialize
+#         @tile = '_'
+#     end
+#     def tileChange(player)
+#         self.tile = player
+#     end
+#     protected
+#     attr_writer :tile
+# end
 
 class GameBoard
+    # attr_reader :board
     def initialize
         @board = [
             ['1', '2', '3'], 
@@ -31,10 +35,12 @@ class GameBoard
         puts "-------------"
         @board.each do |row|
             print "| #{row[0]} | #{row[1]} | #{row[2]} |"
-
             puts "\n-------------"
         end
     end
+
+    
+
 end
 
 
@@ -44,8 +50,8 @@ def CreateBoard
 end
 
 
-board = GameBoard.new
-board.showBoard
+currentGame = GameBoard.new
+currentGame.showBoard
 
 def notbrokenyet
     puts "havent broken it yet :)"
