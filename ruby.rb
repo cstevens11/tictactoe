@@ -67,7 +67,9 @@ class GameBoard
             (@board[1][0] == @board[1][1] && @board[1][1] == @board[1][2]) ||
             (@board[2][0] == @board[2][1] && @board[2][1] == @board[2][2])
             return true
-        else false
+        else 
+            return false
+        end
 
     end
     def verticalCheck
@@ -75,13 +77,17 @@ class GameBoard
             (@board[0][1] == @board[1][1] && @board[1][1] == @board[2][1]) ||
             (@board[0][2] == @board[1][2] && @board[1][2] == @board[2][2])
             return true
-        else false
+        else 
+            return false
+        end
     end
     def diagonalCheck
         if  (@board[0][0] == @board[1][1] && @board[1][1] == @board[2][2]) ||
             (@board[0][2] == @board[1][1] && @board[1][1] == @board[2][0]) 
             return true
-        else false
+        else 
+            return false
+        end
     end
 
 
@@ -89,6 +95,7 @@ class GameBoard
     def checkWinner
         if (horizontalCheck() || verticalCheck() || diagonalCheck())
             return (winner = true)
+        end
     end
 
     #next is playGame function that takes (.gets) user input up to 9 times while checking for 
