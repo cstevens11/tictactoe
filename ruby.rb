@@ -22,13 +22,16 @@
 # end
 
 class GameBoard
-    attr_accessor :board
+    attr_accessor :board, :turnNumber, :winner
+ 
     def initialize
         @board = [
             ['1', '2', '3'], 
             ['4', '5', '6'], 
             ['7', '8', '9']
         ]
+        @turnNumber = 0 
+        @winner = false    
     end
 
     def showBoard
