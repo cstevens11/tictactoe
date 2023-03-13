@@ -47,8 +47,15 @@ class GameBoard
         @turnNumber += 1
     end
 
-    def resetTurns
+    def resetGame
         @turnNumber = 0
+        @winner = false
+        @currentInput = []
+        @board = [
+            ['1', '2', '3'], 
+            ['4', '5', '6'], 
+            ['7', '8', '9']
+        ]
     end
 
     
@@ -130,6 +137,20 @@ class GameBoard
         end
     end
 
+    def rematch()
+        puts "Would you like to play again? enter y/n"
+        answer = gets.chomp
+        if answer == "y"
+            resetGame()
+            playGame()
+        elsif answer == "n"
+            puts "Thank you for playing!"
+        else 
+            puts "Oops invalid response, please enter y/n"
+            rematch()
+        end
+    end
+
     def playGame
         puts "     Tic Tac Toe! \nType either x/o followed by the space # you want to use! (Ex: x4)"
         showBoard()
@@ -143,6 +164,8 @@ class GameBoard
             end
         end
         declareGame()
+        rematch()
+        
 
     
 
