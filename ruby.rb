@@ -22,7 +22,7 @@
 # end
 
 class GameBoard
-    attr_accessor :board, :turnNumber, :winner
+    attr_accessor :board, :turnNumber, :winner, :currentInput
  
     def initialize
         @board = [
@@ -31,7 +31,8 @@ class GameBoard
             ['7', '8', '9']
         ]
         @turnNumber = 0 
-        @winner = false    
+        @winner = false
+        @currentInput = []   
     end
 
     def showBoard
@@ -46,8 +47,9 @@ class GameBoard
         @turnNumber += 1
     end
 
+    
 
-    def playerTurn(symbol, target)
+    def markBoard(symbol, target)
         @board.each do |row|
             row.each_with_index do |cell, index|
                 if (cell == target)
@@ -60,6 +62,22 @@ class GameBoard
         end
     end
 
+    def validateInput(input)
+        if input.length != 2
+            puts "wrong input, Be sure to put x/o followed \nby the space you want to go! Ex: x5 or o3"
+            getInput()
+        else 
+            @currentInput = input
+        end
+    end
+
+    def getInput
+        puts "Please input your move!"
+        input = gets.chomp.split("")
+        p input
+        validateInput(input)
+        p "the currentInput instance is #{currentInput}"
+    end
 
     def horizontalCheck
         # if @board.each do |row|
@@ -102,6 +120,8 @@ class GameBoard
     def playGame
         puts "     Tic Tac Toe! \nType either x/o followed by the space # you want to use! (Ex: x4)"
         showBoard()
+        getInput()
+
     end
 
     #next is playGame function that takes (.gets) user input up to 9 times while checking for 
@@ -126,3 +146,5 @@ end
 notbrokenyet()
 
 currentGame.playGame()
+
+# currentGame.getInput
