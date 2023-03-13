@@ -178,19 +178,15 @@ end
 
 
 
-def newBoard
-
-end
-
 
 currentGame = GameBoard.new
 # currentGame.showBoard
 
-def notbrokenyet
-    puts "havent broken it yet :)"
-end
+# def notbrokenyet
+#     puts "havent broken it yet :)"
+# end
 
-notbrokenyet()
+# notbrokenyet()
 
 currentGame.playGame()
 
