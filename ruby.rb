@@ -47,6 +47,10 @@ class GameBoard
         @turnNumber += 1
     end
 
+    def resetTurns
+        @turnNumber = 0
+    end
+
     
 
     def markBoard(symbol, target)
@@ -54,9 +58,10 @@ class GameBoard
             row.each_with_index do |cell, index|
                 if (cell == target)
                     row[index] = symbol
-                else 
-                    puts "Invalid input please try again. 
-                    Be sure to put x/o followed by the space you want to go! Ex: x5 or o3"
+                    countTurn()
+                # else 
+                #     puts "Invalid input please try again. 
+                #     Be sure to put x/o followed by the space you want to go! Ex: x5 or o3"
                 end
             end
         end
@@ -113,14 +118,33 @@ class GameBoard
 
     def checkWinner
         if (horizontalCheck() || verticalCheck() || diagonalCheck())
-            return (winner = true)
+            @winner = true
+        end
+    end
+
+    def declareGame()
+        if @winner == true
+            puts "We have a WINNER!!!!!"
+        else 
+            puts "Looks like its a TIE!!!!!"
         end
     end
 
     def playGame
         puts "     Tic Tac Toe! \nType either x/o followed by the space # you want to use! (Ex: x4)"
         showBoard()
-        getInput()
+        while @turnNumber < 9 do 
+            getInput()
+            markBoard(currentInput[0], currentInput[1])
+            showBoard()
+            checkWinner()
+            if @winner == true 
+                break
+            end
+        end
+        declareGame()
+
+    
 
     end
 
